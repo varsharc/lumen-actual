@@ -1,8 +1,10 @@
+'use client'
+
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ArrowRight, BarChart2, Globe, Lock, ShieldCheck, Zap } from "lucide-react"
 
-export default function LumenLandingPage() {
+export function LumenLandingPageComponent() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-yellow-50 via-green-50 to-blue-50">
       <header className="container mx-auto px-4 py-8">
