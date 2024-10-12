@@ -6,7 +6,6 @@ import { useAccount } from "wagmi";
 
 export default function Index() {
   const { address } = useAccount();
-  console.log("Address:", address);
   const handleSuccess = (address: string) => {
     console.log("Wallet created with address:", address);
   };
