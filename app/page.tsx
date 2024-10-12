@@ -1,15 +1,27 @@
+"use client";
+import { BlueCreateWalletButton } from "@/components/coinbase-connect";
 import Hero from "@/components/hero";
-import ConnectSupabaseSteps from "@/components/tutorial/connect-supabase-steps";
-import SignUpUserSteps from "@/components/tutorial/sign-up-user-steps";
-import { hasEnvVars } from "@/utils/supabase/check-env-vars";
+import { useAccount } from "wagmi";
 
-export default async function Index() {
+export default function Index() {
+  const { address } = useAccount();
+  console.log("Address:", address);
+  const handleSuccess = (address: string) => {
+    console.log("Wallet created with address:", address);
+  };
+
+  const handleError = (error: unknown) => {
+    console.error("Error creating wallet:", error);
+  };
   return (
     <>
       <Hero />
       <main className="flex-1 flex flex-col gap-6 px-4">
         <h2 className="font-medium text-xl mb-4">Next steps</h2>
-        {hasEnvVars ? <SignUpUserSteps /> : <ConnectSupabaseSteps />}
+        <BlueCreateWalletButton
+          handleSuccess={handleSuccess}
+          handleError={handleError}
+        />
       </main>
     </>
   );
