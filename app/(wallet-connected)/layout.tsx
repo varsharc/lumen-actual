@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import {
@@ -16,7 +16,7 @@ import {
 import { useAccount } from "wagmi";
 
 const sidebarItems = [
-  { name:"Home", icon: HomeIcon, href: "/" },
+  { name: "Home", icon: HomeIcon, href: "/" },
   { name: "Impact Overview", icon: BarChart2, href: "/impact-overview" },
   { name: "DPP Trace", icon: GitBranch, href: "/dpp-trace" },
   { name: "Suppliers", icon: Truck, href: "/suppliers" },
@@ -33,12 +33,28 @@ export default function DashboardLayout({
   const { address } = useAccount();
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const pathname = usePathname();
-  if(!address) return push("/login");
+
+  // Only perform navigation to /login on the client side
+  useEffect(() => {
+    if (!address) {
+      push("/login");
+    }
+  }, [address, push]);
+
+  // Hydration-safe sidebar state
+  const [hasMounted, setHasMounted] = useState(false);
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
+  // Avoid rendering until mounted on client
+  if (!hasMounted) return null;
+
   return (
     <div className="bg-background">
-      <div className="flex h-screen">
+      <div className="flex h-screen text-secondary">
         <aside
-          className={`bg-background transition-all duration-300 ease-in-out ${
+          className={`bg-primary transition-all duration-300 ease-in-out ${
             isSidebarOpen ? "w-64" : "w-20"
           } flex flex-col`}
         >
@@ -66,7 +82,7 @@ export default function DashboardLayout({
                   <Link href={item.href} passHref>
                     <span
                       className={`flex items-center space-x-2 p-2 rounded-lg hover:bg-white-200 transition-colors duration-200 ${
-                        pathname === item.href ? "bg-white text-black" : ""
+                        pathname === item.href ? "bg-secondary text-black" : ""
                       }`}
                     >
                       <item.icon size={24} />
@@ -78,7 +94,9 @@ export default function DashboardLayout({
             </ul>
           </div>
         </aside>
-        <div className="flex-1 overflow-y-auto p-8">{children}</div>
+        <div className="flex-1 overflow-y-auto p-8 text-primary">
+          {children}
+        </div>
       </div>
     </div>
   );
