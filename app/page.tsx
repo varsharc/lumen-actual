@@ -1,4 +1,5 @@
 "use client";
+import { Address } from "@/components/Address/Address";
 import { BlueCreateWalletButton } from "@/components/coinbase-connect";
 import Hero from "@/components/hero";
 import { useAccount } from "wagmi";
@@ -18,10 +19,14 @@ export default function Index() {
       <Hero />
       <main className="flex-1 flex flex-col gap-6 px-4">
         <h2 className="font-medium text-xl mb-4">Next steps</h2>
-        <BlueCreateWalletButton
-          handleSuccess={handleSuccess}
-          handleError={handleError}
-        />
+        {!address ? (
+          <BlueCreateWalletButton
+            handleSuccess={handleSuccess}
+            handleError={handleError}
+          />
+        ) : (
+          <Address address={address} />
+        )}
       </main>
     </>
   );
