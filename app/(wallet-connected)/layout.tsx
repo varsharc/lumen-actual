@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import {
   ChevronLeft,
   ChevronRight,
@@ -11,9 +11,12 @@ import {
   Truck,
   Leaf,
   Users,
+  HomeIcon,
 } from "lucide-react";
+import { useAccount } from "wagmi";
 
 const sidebarItems = [
+  { name:"Home", icon: HomeIcon, href: "/" },
   { name: "Impact Overview", icon: BarChart2, href: "/impact-overview" },
   { name: "DPP Trace", icon: GitBranch, href: "/dpp-trace" },
   { name: "Suppliers", icon: Truck, href: "/suppliers" },
@@ -21,14 +24,16 @@ const sidebarItems = [
   { name: "Consumers", icon: Users, href: "/consumers" },
 ];
 
-export default function RootLayout({
+export default function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const { push } = useRouter();
+  const { address } = useAccount();
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const pathname = usePathname();
-
+  if(!address) return push("/login");
   return (
     <div className="bg-background">
       <div className="flex h-screen">
@@ -41,7 +46,7 @@ export default function RootLayout({
             <h1
               className={`font-bold text-xl ${isSidebarOpen ? "" : "hidden"}`}
             >
-              Dashboard
+              Lumen
             </h1>
             <button
               onClick={() => setIsSidebarOpen(!isSidebarOpen)}
@@ -54,7 +59,7 @@ export default function RootLayout({
               )}
             </button>
           </div>
-          <nav className="flex-1">
+          <div className="flex-1">
             <ul className="space-y-2 p-4">
               {sidebarItems.map((item) => (
                 <li key={item.name}>
@@ -71,9 +76,9 @@ export default function RootLayout({
                 </li>
               ))}
             </ul>
-          </nav>
+          </div>
         </aside>
-        <main className="flex-1 overflow-y-auto p-8">{children}</main>
+        <div className="flex-1 overflow-y-auto p-8">{children}</div>
       </div>
     </div>
   );

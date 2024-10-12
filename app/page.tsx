@@ -1,5 +1,6 @@
 "use client";
 
+import { ThemeSwitcher } from "@/components/theme-switcher";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -10,6 +11,7 @@ import {
   Zap,
   Lock,
 } from "lucide-react";
+import Link from "next/link";
 
 export default function Index() {
   return (
@@ -18,18 +20,12 @@ export default function Index() {
         <header className="container mx-auto px-4 py-8">
           <nav className="flex justify-between items-center">
             <h1 className="text-2xl font-bold text-green-700">LUMEN</h1>
-            <Button
-              variant="outline"
-              className="border-yellow-400 text-green-700 hover:bg-yellow-100"
-            >
-              Contact Us
-            </Button>
+            <ThemeSwitcher />
           </nav>
         </header>
-
         <main className="container mx-auto px-4 py-16 space-y-24">
           <section className="text-center space-y-6">
-            <h2 className="text-5xl font-bold text-green-800">
+            <h2 className="text-4xl font-bold text-green-800">
               Leveraging Unified Marketplace for Environmental Net-zero
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -41,7 +37,7 @@ export default function Index() {
               size="lg"
               className="bg-green-600 hover:bg-green-700 shadow-lg shadow-yellow-200/50"
             >
-              Get Started <ArrowRight className="ml-2" />
+              <Link href="/login">Get Started</Link>
             </Button>
           </section>
           <section>
