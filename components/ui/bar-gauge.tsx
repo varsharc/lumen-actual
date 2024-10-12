@@ -21,7 +21,7 @@ export default function BarGauge({ value = 50 }: BarGaugeProps) {
   };
 
   return (
-    <div className="flex flex-col items-center max-w-5xl mx-auto">
+    <div className="flex flex-col items-center max-w-6xl mx-auto">
       <svg width={width} height={height + 40} className="overflow-visible">
         {sections.map((section, index) => {
           const sectionWidth = ((section.end - section.start) / 100) * width;
