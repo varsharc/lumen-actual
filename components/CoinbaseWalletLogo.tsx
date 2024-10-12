@@ -1,4 +1,6 @@
-const defaultContainerStyles = {
+import { CSSProperties } from "react";
+
+const defaultContainerStyles: CSSProperties = {
   paddingTop: 2,
 };
 
