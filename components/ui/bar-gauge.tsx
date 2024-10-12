@@ -4,7 +4,7 @@ interface BarGaugeProps {
 }
 
 export default function BarGauge({ value = 50 }: BarGaugeProps) {
-  const width = 600;
+  const width = 450;
   const height = 60;
   const markerHeight = 40;
 
