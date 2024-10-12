@@ -94,7 +94,7 @@ export default function DashboardLayout({
             </ul>
           </div>
         </aside>
-        <div className="flex-1 overflow-y-auto p-8 text-primary">
+        <div className="flex-1 overflow-y-auto text-primary bg-transparent">
           {children}
         </div>
       </div>
