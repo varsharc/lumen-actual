@@ -28,10 +28,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <LumenAppWithProviders>
-            <div className="flex flex-col gap-20 max-w-5xl p-5">{children}</div>
-          </LumenAppWithProviders>
-          <ThemeSwitcher />
+          <LumenAppWithProviders>{children}</LumenAppWithProviders>
         </ThemeProvider>
       </body>
     </html>
