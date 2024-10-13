@@ -95,6 +95,12 @@ export default function DashboardLayout({
           </div>
         </aside>
         <div className="flex-1 overflow-y-auto text-primary bg-transparent">
+          <div className="flex items-center justify-between p-4 bg-primary text-white">
+            <div className="flex items-center space-x-4">
+              <img src="https://levi.in/cdn/shop/files/logo_his_res.png?v=1697785388&width=160" alt="Logo" className="h-8 w-auto object-contain" />
+              <span className="font-bold text-xl">Levis</span>
+            </div>
+          </div>
           {children}
         </div>
       </div>
