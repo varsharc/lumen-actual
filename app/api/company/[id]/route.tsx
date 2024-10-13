@@ -1,5 +1,4 @@
 import { createClient } from "@supabase/supabase-js"
-import { get } from "http";
 import { NextRequest, NextResponse } from "next/server";
 
 export const getCompany = async (id: string) => {
@@ -9,7 +8,7 @@ export const getCompany = async (id: string) => {
   );
   const { data, error } = await supabase
     .from("esg_facts")
-    .select("*")
+    .select(`*, companies(*)`)
     .eq("company_id", id)
     .single();
   return { data, error };

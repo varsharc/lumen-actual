@@ -14,6 +14,7 @@ import {
   HomeIcon,
 } from "lucide-react";
 import { useAccount } from "wagmi";
+import { ProvideCompany } from "@/providers/CompanyProvider";
 
 const sidebarItems = [
   { name: "Impact Overview", icon: BarChart2, href: "/impact-overview" },
@@ -50,6 +51,7 @@ export default function DashboardLayout({
   if (!hasMounted) return null;
 
   return (
+    <ProvideCompany>
     <div className="bg-background">
       <div className="flex h-screen text-secondary">
         <aside
@@ -104,5 +106,6 @@ export default function DashboardLayout({
         </div>
       </div>
     </div>
+    </ProvideCompany>
   );
 }

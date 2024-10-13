@@ -1,12 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import BarGauge from "@/components/ui/bar-gauge";
+import BarGauge from "@/components/ui/bar-gaugev2";
 import ESG from "@/components/ui/esg";
 import { Button } from "@/components/ui/button"; // Assuming there's a Button component
+import { useCompanyContext } from "@/providers/CompanyProvider";
 
 export default function ImpactOverview() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { companyData } = useCompanyContext();
 
   const handleButtonClick = () => {
     setIsModalOpen(true);
@@ -21,10 +23,10 @@ export default function ImpactOverview() {
       <h1 className="text-2xl font-bold mb-4">Impact Overview</h1>
       <div className="flex flex-row justify-evenly gap-4 w-full">
         <div>
-          <ESG eScore={80} sScore={70} gScore={90} />
+          <ESG companyData={companyData?.data} />
         </div>
         <div>
-          <BarGauge value={35} />
+          <BarGauge value={35} companyData={companyData?.data} />
         </div>
       </div>
       <div className="flex justify-center">
