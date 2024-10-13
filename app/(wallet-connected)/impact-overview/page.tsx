@@ -8,7 +8,7 @@ import { useCompanyContext } from "@/providers/CompanyProvider";
 
 export default function ImpactOverview() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { companyData } = useCompanyContext();
+  const { currentCompanyData } = useCompanyContext();
 
   const handleButtonClick = () => {
     setIsModalOpen(true);
@@ -23,10 +23,10 @@ export default function ImpactOverview() {
       <h1 className="text-2xl font-bold mb-4">Impact Overview</h1>
       <div className="flex flex-row justify-evenly gap-4 w-full">
         <div>
-          <ESG companyData={companyData?.data} />
+          <ESG companyData={currentCompanyData} />
         </div>
         <div>
-          <BarGauge value={35} companyData={companyData?.data} />
+          <BarGauge value={35} companyData={currentCompanyData} />
         </div>
       </div>
       <div className="flex justify-center">
