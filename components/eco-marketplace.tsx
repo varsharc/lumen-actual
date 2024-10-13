@@ -9,6 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Star } from 'lucide-react'
 import { Scatter } from 'react-chartjs-2'
 import { Chart as ChartJS, LinearScale, PointElement, LineElement, Tooltip, Legend } from 'chart.js'
+import { FetchSuppliersByID } from '@/utils/databaseQueries/suppliers'
 
 ChartJS.register(LinearScale, PointElement, LineElement, Tooltip, Legend)
 
@@ -16,6 +17,11 @@ export function EcoMarketplace() {
   const [productType, setProductType] = useState('')
   const [product, setProduct] = useState('')
   const [quantity, setQuantity] = useState('')
+
+  const suppliData = FetchSuppliersByID("10001")
+  console.log(suppliData)
+
+
 
   const supplierData = [
     { name: 'Bambrew', env: '4/5', social: '3/5', governance: '3/5', price: 80, sustainability: 70 },

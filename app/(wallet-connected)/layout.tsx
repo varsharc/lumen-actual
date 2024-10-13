@@ -16,7 +16,6 @@ import {
 import { useAccount } from "wagmi";
 
 const sidebarItems = [
-  { name: "Home", icon: HomeIcon, href: "/" },
   { name: "Impact Overview", icon: BarChart2, href: "/impact-overview" },
   { name: "DPP Trace", icon: GitBranch, href: "/dpp-trace" },
   { name: "Suppliers", icon: Truck, href: "/suppliers" },
@@ -59,11 +58,11 @@ export default function DashboardLayout({
           } flex flex-col`}
         >
           <div className="flex items-center justify-between p-4">
-            <h1
+            <Link href={"/"} passHref
               className={`font-bold text-xl ${isSidebarOpen ? "" : "hidden"}`}
             >
               Lumen
-            </h1>
+            </Link>
             <button
               onClick={() => setIsSidebarOpen(!isSidebarOpen)}
               className="p-2 rounded-full hover:bg-gray-200 transition-colors duration-200"

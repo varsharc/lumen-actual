@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Leaf, Users, Building2 } from "lucide-react";
+import { fetchCompanyById } from "@/utils/databaseQueries/companies";
 
 type ESGProps = {
   eScore: number;
@@ -11,6 +12,8 @@ type ESGProps = {
 export default function ESG(
   { eScore, sScore, gScore }: ESGProps = { eScore: 0, sScore: 0, gScore: 0 },
 ) {
+  const companyData = fetchCompanyById("10001");
+  console.log({companyData});
   return (
     <div className="flex flex-col items-center space-y-4">
       <Card className="w-full">
