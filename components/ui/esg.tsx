@@ -21,11 +21,7 @@ export default function ESG(
           </CardTitle>
         </CardHeader>
         <CardContent className="flex flex-col items-center">
-          <Progress
-            value={eScore}
-            className="h-16 w-16"
-            indicatorColor="bg-green-500"
-          />
+          <Progress value={eScore} className="h-16 w-16" />
           <p className="mt-2 text-lg font-semibold">{eScore}%</p>
         </CardContent>
       </Card>
@@ -36,11 +32,7 @@ export default function ESG(
           <CardTitle className="mt-2 text-sm font-medium">Social</CardTitle>
         </CardHeader>
         <CardContent className="flex flex-col items-center">
-          <Progress
-            value={sScore}
-            className="h-16 w-16"
-            indicatorColor="bg-blue-500"
-          />
+          <Progress value={sScore} className="h-16 w-16" />
           <p className="mt-2 text-lg font-semibold">{sScore}%</p>
         </CardContent>
       </Card>
@@ -51,11 +43,7 @@ export default function ESG(
           <CardTitle className="mt-2 text-sm font-medium">Governance</CardTitle>
         </CardHeader>
         <CardContent className="flex flex-col items-center">
-          <Progress
-            value={gScore}
-            className="h-16 w-16"
-            indicatorColor="bg-yellow-500"
-          />
+          <Progress value={gScore} className="h-16 w-16" />
           <p className="mt-2 text-lg font-semibold">{gScore}%</p>
         </CardContent>
       </Card>

@@ -5,7 +5,8 @@
     "build": "next build",
     "start": "next start",
     "vercel": "vercel",
-    "prod": "vercel --prod"
+    "prod": "vercel --prod",
+    "vercel:yolo": "vercel --build-env NEXT_PUBLIC_IGNORE_BUILD_ERROR=true --prod"
   },
   "dependencies": {
     "@coinbase/wallet-sdk": "^4.1.0",

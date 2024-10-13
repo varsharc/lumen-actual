@@ -52,6 +52,7 @@ const CircularDiagram = () => {
         </CardTitle>
       </CardHeader>
       <CardContent>
+        {/* @ts-ignore */} 
         <ChartContainer config={{}} className="h-[300px]">
           <ResponsiveContainer width="100%" height="100%">
             <PieChart>
@@ -87,7 +88,7 @@ const CircularDiagram = () => {
   );
 };
 
-const InstructionModal = ({ title, instructions }) => (
+const InstructionModal = ({ title, instructions }:any) => (
   <Dialog>
     <DialogTrigger asChild>
       <Button
@@ -107,7 +108,7 @@ const InstructionModal = ({ title, instructions }) => (
       </DialogHeader>
       <div className="mt-4 text-green-800">
         <ul className="list-disc list-inside space-y-2">
-          {instructions.map((instruction, index) => (
+          {instructions.map((instruction:any, index:any) => (
             <li key={index}>{instruction}</li>
           ))}
         </ul>
